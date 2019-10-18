@@ -1,0 +1,24 @@
+{
+    "development": {
+        "username": "root",
+        "password": "estudarmais",
+        "database": "node_testes",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+
+    },
+    "test": {
+        "username": "root",
+        "password": null,
+        "database": "crm_teste",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+    },
+    "production": {
+        "username": "tar",
+        "password": "abacaxi",
+        "database": "crm_chat",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+    }
+}
