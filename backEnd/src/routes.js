@@ -1,9 +1,22 @@
-const { Router } = require('express');
+import { Router } from 'express';
+import multer from 'multer';
+
+import multerConfig from "./config/multer";
+import UserController from './app/controllers/UserController';
+import SessionController from './app/controllers/SessionController';
+
+import Middleware from './app/middlewares/auth';
 
 const routes = new Router();
+const upload = multer(multerConfig);
 
-routes.get('/', (req, res) => {
-    return res.send('ok');
+routes.post('/users', UserController.store);
+routes.post('/sessions', SessionController.store);
+
+routes.use(Middleware); // o middleware só vale depois da importação
+routes.put('/users', UserController.update);
+
+routes.post('/files', upload.single('file'), (req, res) => {
+    return res.json({ok: true});
 });
-
 export default routes;
