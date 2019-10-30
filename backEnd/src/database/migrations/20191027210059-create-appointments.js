@@ -1,7 +1,8 @@
 
 module.exports = {
     up: (queryInterface, Sequelize) => {
-      return queryInterface.createTable('appointments',{
+      return queryInterface.createTable('appontments',{
+        // goBarber.appontments
         id:{
             allowNull: false,
             autoIncrement: true,
@@ -41,7 +42,7 @@ module.exports = {
       });
     },
     down: queryInterface => {
-      return queryInterface.dropTable('appointments');
+      return queryInterface.dropTable('appontments');
     }
   };
   
