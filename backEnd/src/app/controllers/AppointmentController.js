@@ -8,6 +8,8 @@ import User from '../models/User';
 import File from '../models/File';
 import Notification from '../schemas/Notification';
 
+import Queue from "../../libs/Queue";
+import CancellationMail from "../jobs/CancellationMail";
 
 class AppointmentController {
     async index(req, res) {
@@ -160,9 +162,11 @@ class AppointmentController {
             appointment.canceled_at = new Date();
             await appointment.save();
     
-
-    
-            return res.status(201).json(appointment);
+            await Queue.add(CancellationMail.key, {
+                appointment,
+            });
+            
+            return res.status(200).json(appointment);
         } catch (error) {
             console.log(error);
             throw error;

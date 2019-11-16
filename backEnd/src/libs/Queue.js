@@ -25,6 +25,18 @@ class Queue {
     add(queue, job) {
         return this.queues[queue].bee.createJob(job).save();
     }
+
+    processQueue() {
+      jobs.forEach(job => {
+        const { bee, handle } = this.queues[job.key];
+        
+        bee.on('falied', this.handleFalied).process(handle);
+      });
+    }
+
+    handleFalied(job, err) {
+        console.log(`queue ${job.queue.name}: Falied`, err);
+    }
 }
 
 export default new Queue();

@@ -15,17 +15,23 @@ class Mail {
         this.configureTempletes();
     }
     async configureTempletes() {
-        const viewPath = resolve(__dirname, '..', 'views', 'emails');
-        this.transporter.use('compile', nodemailerhbs({
-            viewEngine: exphbs.create({
-                layoutsDir:  resolve(viewPath, 'layouts'),
-                partialsDir: resolve(viewPath, 'partials'),
-                defaultLayout: 'default',
-                extname: '.hbs',
-            }),
-            viewPath,
-            extName: '.hbs',
-        }));
+        try {
+            const viewPath = resolve(__dirname, '..', 'app', 'views', 'emails');
+
+            this.transporter.use('compile', nodemailerhbs({
+                viewEngine: exphbs.create({
+                    layoutsDir:  resolve(viewPath, 'layouts'),
+                    partialsDir: resolve(viewPath, 'partials'),
+                    defaultLayout: 'default',
+                    extname: '.hbs',
+                }),
+                viewPath,
+                extName: '.hbs',
+            }));
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
     }
 
     async sendMail(message) {
