@@ -1,4 +1,4 @@
 export default {
-    host: '127.0.0.1',
-    pot: 6379,
+    host: process.env.REDIS_HOST,
+    pot: process.env.REDIS_POST,
 };

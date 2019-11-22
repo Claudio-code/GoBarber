@@ -28,6 +28,13 @@ class ShceduleController {
                         [Op.between]: [ startOfDay(parsedDate), endOfDay(parsedDate) ],
                     },
                 },
+                include: [
+                    {
+                        model: User,
+                        as: 'user',
+                        attributes: [ 'name' ],
+                    },
+                ],
                 order: ['date'],
             })
     
