@@ -1,9 +1,40 @@
 import React from 'react';
+import { Form, Input } from '@rocketseat/unform';
+import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
 
-// import { Container } from './styles';
+import { useDispatch } from 'react-redux';
+
+import { signInRequest } from '../../store/modules/auth/actions';
+
+import logo from '../../assets/logo.png';
+
+const schema = Yup.object().shape({
+  email: Yup.string()
+    .email('Insira um email valido')
+    .required('O e-mail é obrigatorio.'),
+
+  password: Yup.string()
+    .required('A senha é obrigatorio.'),
+});
 
 export default function SingIn() {
+  const dispatch = useDispatch();
+
+  
+  function handleSubmit({ email, password }) {
+    dispatch(signInRequest(email, password));
+  }
+
   return (
-    <div>SingIn</div>
+    <>
+      <img src={logo} alt="Gobarber" width="08%" height="10%" />
+      <Form schema={schema} onSubmit={handleSubmit}>
+        <Input name="email" type="email" placeholder="insira seu email" />
+        <Input name="password" type="password" placeholder="insira sua senha" />
+        <button type="submit">Acessar</button>
+        <Link to="/register">Criar conta gratuita</Link>
+      </Form>
+    </>
   );
 }
