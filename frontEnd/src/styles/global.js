@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
@@ -10,6 +12,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
     height: 100%;
   }
+
 
   *:focus {
     outline: 0;
@@ -45,6 +48,10 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+  }
+
+  .Toastify > div {
+    height: auto;
   }
 
 `;
