@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
+import 'react-perfect-scrollbar/dist/css/styles.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default createGlobalStyle`
@@ -10,22 +11,12 @@ export default createGlobalStyle`
     padding: 0;
     outline: 0;
     box-sizing: border-box;
-    height: 100%;
   }
-
 
   *:focus {
     outline: 0;
   }
-  img {
-    height: 10%;
-  }
-  input {
-    height: auto;
-  }
-  button {
-    height: auto;
-  }
+
   html, body, #root {
     height: 100%;
   }
@@ -35,7 +26,7 @@ export default createGlobalStyle`
   }
 
   body, input, button {
-    font: 14px 'Roboto', sans-serif; 
+    font: 14px 'Roboto', sans-serif;
   }
 
   a {
@@ -49,9 +40,4 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
-
-  .Toastify > div {
-    height: auto;
-  }
-
 `;

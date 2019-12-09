@@ -1,19 +1,16 @@
 import React from 'react';
-
-import Prototype from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { Wrapper, Content } from './styles';
 
 export default function AuthLayout({ children }) {
   return (
     <Wrapper>
-      <Content>
-        {children}
-      </Content>
+      <Content>{children}</Content>
     </Wrapper>
   );
 }
 
-AuthLayout.prototype = {
-    children: Prototype.element.isRequired,
-}
+AuthLayout.propTypes = {
+  children: PropTypes.element.isRequired,
+};
