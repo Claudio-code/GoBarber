@@ -19,6 +19,7 @@ export default function RouteWrapper({
     return <Redirect to="/dashboard" />
 
   const Layout = signed ? DefaultLayout : AuthLayout;
+
   return (
     <Route
       {...rest}
@@ -29,6 +30,7 @@ export default function RouteWrapper({
       )}
     />
   );
+
 }
 
 RouteWrapper.prototype = {
