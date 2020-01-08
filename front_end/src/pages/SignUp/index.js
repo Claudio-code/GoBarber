@@ -15,9 +15,11 @@ const schema = Yup.object().shape({
 });
 
 export default function SignUp() {
+
   function handleSubmit(data) {
     console.tron.log(data);
   }
+  
   return (
     <>
       <img src={logo} alt="GoBarber" />
