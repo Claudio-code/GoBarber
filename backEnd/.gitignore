@@ -1,6 +1,6 @@
 node_modules
 tmp/uploads/
-.env
+
 yarn.lock
 yarn-error.log
 .vscode

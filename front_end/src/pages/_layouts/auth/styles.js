@@ -32,6 +32,13 @@ export const Content = styled.div`
         color: rgba(255, 255, 255, 0.7);
       }
     }
+    
+    span {
+      color: #fb6f91;
+      margin: 0 0 10px;
+      font-weight: bold;
+      align-self: center;
+    }
 
     button {
       margin: 5px 0 0;
