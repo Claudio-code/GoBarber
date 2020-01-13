@@ -10,6 +10,7 @@ import {
 } from './styles';
 import logo from '../../assets/logo.svg';
 
+import Notifications from '../Notifications';
 export default function Header() {
 
   return (
@@ -20,6 +21,7 @@ export default function Header() {
           <Link to="/dashboard">DASHBOARD</Link>
         </Nav>
         <Aside>
+          <Notifications />
           <Profile>
             <div>
               <strong>Claudio S. Junior</strong>
