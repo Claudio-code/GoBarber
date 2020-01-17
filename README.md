@@ -7,6 +7,10 @@ O front-end foi construido com o reactjs que hoje é muito usado para construir 
 E um framework muito facil de usar e muito pratico e produtivo
 
 <div class="border d-flex">
-  <img src="images/dashboard.png" width="50%" height="50%" />
-  <img src="images/update_perfil.jpg" width="50%" height="50%" />
+  <div class="p-5 border bg-gray-light">
+    <img src="images/dashboard.png" width="50%" height="50%" />
+  </div>
+  <div class="p-5 border bg-gray-light">
+    <img src="images/update_perfil.jpg" width="50%" height="50%" />
+  </div>
 </div>
