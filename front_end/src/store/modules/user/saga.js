@@ -6,9 +6,12 @@ import api from '../../../services/api';
 
 export function* updateProfile({ payload }) {
   try {
-    const { name, email, ...rest } = payload.data;
+    const { name, email, avatar, ...rest } = payload.data;
+    console.tron.log(payload.data);
+    
+    // const avatar_id = avatar.id;
     const profile = Object.assign(
-      { name, email },
+      { name, email, avatar},
       rest.OldPassword ? rest : {}
     );
   
