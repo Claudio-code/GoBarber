@@ -20,7 +20,7 @@ export function* signIn({ payload }) {
         console.tron.error('usuario n permitido');
         return;
     }
-
+    
     toast.success('Td joia');
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
@@ -62,7 +62,7 @@ export function* signUp({ payload }) {
 
 export function setToken({ payload }) {
   if (!payload) return;
-
+  
   const { token } = payload.auth;
   if (token) {
     api.defaults.headers.Authorization = `Bearer ${token}`;

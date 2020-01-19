@@ -14,7 +14,8 @@ class ProviderController {
             }]
         });
 
-
+        
+        
         return res.status(200).json(provider);
     }
 }

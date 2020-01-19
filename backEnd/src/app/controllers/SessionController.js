@@ -38,7 +38,7 @@ class SessionController {
         }
 
         const { id, name, avatar, provider } = user;
-
+        
         return res.status(200).json({
             User: {
                 id,

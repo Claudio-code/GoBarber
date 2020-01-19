@@ -10,7 +10,8 @@ import { Container } from './styles';
 export default function Profile() {
   const profile = useSelector(state => state.user.profile);
   const dispatch = useDispatch();
-
+  console.log(profile);
+  
   function handleSubmit(data) {
     dispatch(updateProfileRequest(data));
     console.tron.log(data);

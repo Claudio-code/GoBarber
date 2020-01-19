@@ -22,7 +22,7 @@ class UserController {
             }
 
             const { id, name, email, provider } = await User.create(req.body);
-
+            
             return res.json({
                 id,
                 name,
@@ -62,10 +62,12 @@ class UserController {
         
         if (oldPassword && !(await user.checkPassword(oldPassword)) ) {
             return res.status(401).json({ error: 'Password does not match' });
-        }        
+        }
+
+
         await user.update(req.body);
 
-        const { id, name, provider, avatar } = await User.findByPk(req.userId, {
+        const { id, name, provider, avatar_id } = await User.findByPk(req.userId, {
             include: [
                 {
                     model: File,
@@ -80,7 +82,7 @@ class UserController {
             name,
             email,
             provider,
-            avatar
+            avatar_id
         });
     }
 }
