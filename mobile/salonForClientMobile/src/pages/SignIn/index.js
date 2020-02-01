@@ -14,7 +14,12 @@ import {
   SignLinkText
 } from './styles';
 
-export default function SignIn() {
+export default function SignIn({ navigation }) {
+
+  function handleChangePage() {
+    navigation.navigate('SignUp');
+  }
+
   return (
     <Background>
       <Container>
@@ -37,7 +42,7 @@ export default function SignIn() {
             Acessar
           </SubmitButton>
         </Form>
-        <SignLink onPress={() => {}}>
+        <SignLink onPress={handleChangePage}>
           <SignLinkText>Criar conta gratuita</SignLinkText>
         </SignLink>
       </Container>
