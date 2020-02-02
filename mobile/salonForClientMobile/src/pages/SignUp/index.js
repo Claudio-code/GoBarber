@@ -18,8 +18,8 @@ export default function SignUp({ navigation }) {
   const passwordRef = useRef();
   const emailRef = useRef();
 
-  function handleChangePage() {
-    navigation.navigate('SignIn');
+  function handleSubmit() {
+    
   }
 
   return (
@@ -51,13 +51,14 @@ export default function SignUp({ navigation }) {
             secureTextEntry
             placeholder="Sua senha"
             ref={passwordRef}
+            onSubmitEditing={handleSubmit}
           />
 
           <SubmitButton> Criar conta </SubmitButton>
 
         </Form>
         
-        <SignLink onPress={handleChangePage}>
+        <SignLink onPress={() => navigation.navigate('SignIn')}>
           <SignLinkText>Já tenho uma conta</SignLinkText>
         </SignLink>
 

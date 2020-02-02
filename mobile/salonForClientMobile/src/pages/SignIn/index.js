@@ -17,8 +17,8 @@ import {
 export default function SignIn({ navigation }) {
   const passwordRef = useRef();
 
-  function handleChangePage() {
-    navigation.navigate('SignUp');
+  function handleSubmit() {
+    
   }
 
   return (
@@ -41,12 +41,13 @@ export default function SignIn({ navigation }) {
             secureTextEntry
             placeholder="Sua senha"
             ref={passwordRef}
+            onSubmitEditing={handleSubmit}
           />
           <SubmitButton>
             Acessar
           </SubmitButton>
         </Form>
-        <SignLink onPress={handleChangePage}>
+        <SignLink onPress={() => navigation.navigate('SignUp')}>
           <SignLinkText>Criar conta gratuita</SignLinkText>
         </SignLink>
       </Container>
