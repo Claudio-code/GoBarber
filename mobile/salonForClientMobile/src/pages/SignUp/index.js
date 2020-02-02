@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Image } from 'react-native';
 
 import Background from '../../components/background';
@@ -15,6 +15,8 @@ import {
 } from './styles';
 
 export default function SignUp({ navigation }) {
+  const passwordRef = useRef();
+  const emailRef = useRef();
 
   function handleChangePage() {
     navigation.navigate('SignIn');
@@ -26,11 +28,12 @@ export default function SignUp({ navigation }) {
         <Image source={logo} />    
         <Form>
           <FormInput 
-            icon="people"
-            keyboardType="email-address"
+            icon="person-outline"
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Digite seu nome"
+            returnKeyType="next"
+            onSubmitEditing={() => emailRef.current.focus()}
           />
           <FormInput 
             icon="mail-outline"
@@ -38,20 +41,26 @@ export default function SignUp({ navigation }) {
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Digite seu e-mail"
+            returnKeyType="next"
+            ref={emailRef}
+            onSubmitEditing={() => passwordRef.current.focus()}
           />
 
           <FormInput 
             icon="lock-outline"
             secureTextEntry
             placeholder="Sua senha"
+            ref={passwordRef}
           />
-          <SubmitButton>
-            Criar conta
-          </SubmitButton>
+
+          <SubmitButton> Criar conta </SubmitButton>
+
         </Form>
+        
         <SignLink onPress={handleChangePage}>
           <SignLinkText>Já tenho uma conta</SignLinkText>
         </SignLink>
+
       </Container>
     </Background>
   );
