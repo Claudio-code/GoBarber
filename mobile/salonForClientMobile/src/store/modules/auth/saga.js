@@ -1,17 +1,18 @@
 import { all, takeLatest, put, call } from 'redux-saga/effects';
 import { Alert } from 'react-native';
 import api from '../../../services/api';
-
-
 import { signInSucess, signFailure } from './actions';
 
 export function* signIn({ payload }) {
   try {
     const { email, password } = payload;
     if (!email || !password) return;
+    
+
     const response = yield call(api.post, 'sessions', {
       email, password
     });
+    console.log(response.data);
     
     const { token, User } = response.data;
 
@@ -26,7 +27,7 @@ export function* signIn({ payload }) {
 
     yield put(signInSucess(token, User));
   } catch (error) {
-    
+    console.log(error);
     yield put(signFailure());
     return Alert.alert(
       'Login not authorized', 
@@ -42,16 +43,11 @@ export function* signUp({ payload }) {
     yield call(api.post, 'users',{
       name,
       email,
-      password,
-      provider: true,
+      password
     });
-  
-    toast.success('Td joia');
-  
-    history.push('/');  
+
   
   } catch (error) {
-    toast.error('Deu pau');
     console.log(error);
     yield put(signFailure());
     return;
@@ -70,7 +66,7 @@ export function setToken({ payload }) {
 }
 
 export function signOut() {
-  history.push('/');
+
 }
 
 export default all([
