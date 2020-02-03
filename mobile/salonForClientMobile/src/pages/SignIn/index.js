@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Image } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { signInRequest } from '../../store/modules/auth/actions';
 
@@ -18,7 +18,7 @@ import {
 export default function SignIn({ navigation }) {
   const passwordRef = useRef();
   const dispatch = useDispatch();
-
+  const loading = useSelector(state => state.auth.loading);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -53,7 +53,10 @@ export default function SignIn({ navigation }) {
             value={password}
             onChangeText={setPassword}
           />
-          <SubmitButton onPress={handleSubmit}>
+          <SubmitButton 
+            loading={loading}
+            onPress={handleSubmit}
+          >
             Acessar
           </SubmitButton>
         </Form>
