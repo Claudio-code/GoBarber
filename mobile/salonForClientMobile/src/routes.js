@@ -14,6 +14,16 @@ export default (signedIn = false) =>
       }),
       App: createBottomTabNavigator({
         Dashboard
+      }, {
+        tabBarOptions: {
+          keyboardHidesTabBar: true,
+          activeTintColor: '#FFF',
+          inactiveTintColor: 'rgba(255, 255, 255, 0.7)',
+          style: {
+            backgroundColor: '#00695c',
+            
+          }
+        }
       })
     }, {
       initialRouteName: signedIn !== false ? 'App': 'Sign'
