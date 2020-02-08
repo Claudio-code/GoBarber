@@ -6,6 +6,8 @@ import File from '../models/File';
 class UserController {
     async store(req, res) {
         try {
+            console.log(req.body);
+            
             const schema = Yup.object().shape({
                 name: Yup.string().required(),
                 email: Yup.string().email().required(),
