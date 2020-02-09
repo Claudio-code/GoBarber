@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -11,17 +11,22 @@ import {
   Time
 } from './styles';
 
-export default function Appointment() {
+export default function Appointment({ data }) {
+
+  useEffect(() => {
+  }, []);
+
   return (
     <Container>
       <Left>
         <Avatar 
           source={{ 
-            uri: 'https://api.adorable.io/avatars/40/abott@adorable.png' 
+            uri: data.provider.avatar ? data.provider.avatar 
+              : 'https://api.adorable.io/avatars/40/abott@adorable.png' 
           }} 
         />
         <Info>
-          <Name>Claudio</Name>
+          <Name>{data.provider.name}</Name>
           <Time>em 3 minutos</Time>
         </Info>
       </Left>

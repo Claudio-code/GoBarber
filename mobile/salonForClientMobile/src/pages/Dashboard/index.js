@@ -11,7 +11,7 @@ import {
   List 
 } from './styles';
 
-const data = [1, 2, 3, 4, 5];
+
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -29,9 +29,9 @@ export default function Dashboard() {
         </Title>
         <List
           data={appointments}
-          keyExtractor={item => item.id}
-          key={item => item.id}
-          renderItem={item => <Appointment data={data} key={data.id} />}
+          keyExtractor={item => String(item.id)}
+          key={item => String(item.id)}
+          renderItem={item => <Appointment data={item.item} key={String(item.item.id)} />}
         />
       </Container>
     </Background>
