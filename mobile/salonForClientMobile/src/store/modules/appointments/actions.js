@@ -13,3 +13,10 @@ export function setAppointments(appointments) {
     payload: { appointments }
   };   
 }
+
+export function cancelAppointments(appointmentId) {
+  return {
+    type: '@appointments/DELETE_IS_APPOINTMENT',
+    payload: { appointmentId }
+  };
+}
