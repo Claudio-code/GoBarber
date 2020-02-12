@@ -1,18 +1,26 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Background from '../../components/background';
 import Appointment from '../../components/Appointment';
+import { getAppointments } from '../../store/modules/appointments/actions';
 import { 
   Container, 
   Title, 
   List 
 } from './styles';
 
-const data = [1, 2, 3, 4, 5];
+
 
 export default function Dashboard() {
+  const dispatch = useDispatch();
+  const appointments = useSelector(state => state.appointments.appointments);
+
+  useEffect(() => {
+    dispatch(getAppointments());
+  }, []);
+
   return (
     <Background>
       <Container>
@@ -20,9 +28,10 @@ export default function Dashboard() {
           Agendamentos
         </Title>
         <List
-          data={data}
-          keyExtractor={item => String(item)}
-          renderItem={item => <Appointment data={data} />}
+          data={appointments}
+          keyExtractor={item => String(item.id)}
+          key={item => String(item.id)}
+          renderItem={item => <Appointment data={item.item} key={String(item.item.id)} />}
         />
       </Container>
     </Background>

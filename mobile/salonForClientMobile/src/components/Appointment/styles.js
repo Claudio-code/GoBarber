@@ -5,6 +5,7 @@ export const Container = styled.View`
   padding: 20px;
   border-radius: 4px;
   background-color: #FFF;
+  opacity: ${props => (props.past ? 0.6 : 1)};
 
   flex-direction: row;
   align-items: center;
