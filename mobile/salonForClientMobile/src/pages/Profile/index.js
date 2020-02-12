@@ -7,18 +7,24 @@ import {
   FormInput,
   Separator,
   Title,
-  SubmitButton
+  SubmitButton,
+  LogoutButton
 } from './styles';
+
 import { updateProfileRequest } from '../../store/modules/user/actions';
+import { signOut } from '../../store/modules/auth/actions';
 import Background from '../../components/background';
+
 export default function Profile() {
 
+  const dispatch = useDispatch();
   const profile = useSelector(state => state.user.profile); 
+
   const emailRef = useRef();
   const oldPasswordRef = useRef();
   const newPasswordRef = useRef();
   const confirmPasswordRef = useRef();
-  const dispatch = useDispatch();
+  
   const [name, setName] = useState(profile.name);
   const [email, setEmail] = useState(profile.email);
   const [oldPassword, setOldPassword] = useState('');
@@ -39,9 +45,13 @@ export default function Profile() {
       oldPassword: oldPassword,
       password: newPassword,
       ConfirmPassword: confirmPassword
-    }))
+    }));
   }
 
+  function handleLogOut() {
+   dispatch(signOut());
+  }
+  
   return (
     <Background>
       <Container>
@@ -112,6 +122,11 @@ export default function Profile() {
           <SubmitButton onPress={handleSubmit}>
             Atualizar perfil
           </SubmitButton>
+
+          <LogoutButton onPress={handleLogOut}>
+            Sair
+          </LogoutButton>
+
         </Form>
       </Container>
     </Background>
