@@ -34,3 +34,8 @@ export const Title = styled.Text`
 export const SubmitButton = styled(Button)`
   margin-top: 5px;
 `;
+
+export const LogoutButton = styled(Button)`
+  background-color: #f64c75;
+  margin-top: 5px;
+`;
