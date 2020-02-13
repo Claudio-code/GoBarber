@@ -1,10 +1,15 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+
+import SelectProvider from './pages/New/SelectProvider';
+import Confirm from './pages/New/Confirm';
+import SelectDateTime from './pages/New/SelectDateTime';
 
 export default (signedIn = false) => 
   createAppContainer(
@@ -15,6 +20,14 @@ export default (signedIn = false) =>
       }),
       App: createBottomTabNavigator({
         Dashboard,
+        New: {
+          screen: createStackNavigator({
+            SelectProvider,
+            SelectDateTime,
+            Confirm
+          }),
+          
+        },
         Profile
       }, {
         tabBarOptions: {
