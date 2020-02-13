@@ -1,12 +1,27 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-
+import { SafeAreaView, TouchableOpacity, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Background from '../../../components/background';
 // import { Container } from './styles';
 
 export default function SelectProvider() {
   return (
-    <View>
-      <Text>SelectProvider</Text>
-    </View>
+    <Background>
+      <SafeAreaView>
+
+        <Text>SelectProvider</Text>
+      </SafeAreaView>
+    </Background>
   );
 }
+
+SelectProvider.navigationOptions = ({ navigation }) => ({
+  title: 'Selecione o Prestador',
+  headerLeft: () => (
+    <TouchableOpacity 
+      onPress={() => navigation.navigate('Dashboard')}
+    >
+      <Icon name="chevron-left" size={24} color="#FFF" />
+    </TouchableOpacity>
+  )
+});
