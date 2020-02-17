@@ -20,3 +20,17 @@ export function cancelAppointments(appointmentId) {
     payload: { appointmentId }
   };
 }
+
+export function getAllProviders() {
+  return {
+    type: '@appointments/GET_ALL_APOINTMENTS',
+    payload: {}
+  };
+}
+
+export function setAllProviders(providers) {
+  return {
+    type: '@appointments/SET_ALL_APOINTMENTS',
+    payload: { providers }
+  };
+}

@@ -1,6 +1,10 @@
 import { all, takeLatest, put, call } from 'redux-saga/effects';
 import api from '../../../services/api';
-import { setAppointments, getAppointments } from './actions';
+import { 
+  setAppointments, 
+  getAppointments,
+  setAllProviders
+} from './actions';
 
 
 function* getAllAppointmentsApi() {
@@ -30,8 +34,21 @@ function* cancelIsAppointment({ payload }) {
   }
 }
 
+function* getAllProviders() {
+  try {
+    const response = yield call(api.get, 'providers');
+
+    yield put(setAllProviders(response.data));
+
+  } catch (error) {
+    console.log(error);
+    return;
+  }
+}
+
 
 export default all([
+  takeLatest('@appointments/GET_ALL_APOINTMENTS', getAllProviders),
   takeLatest('@appointments/GET_ALL', getAllAppointmentsApi),
   takeLatest('@appointments/DELETE_IS_APPOINTMENT', cancelIsAppointment)
 ]);

@@ -2,6 +2,7 @@ import produce from 'immer';
 
 const INITIAL_STATE = {
   appointments: null,
+  providers: null
 };
 
 export default function appointments(state = INITIAL_STATE, action) {
@@ -13,6 +14,10 @@ export default function appointments(state = INITIAL_STATE, action) {
       }
       case '@auth/SIGN_OUT': { 
         draft.appointments = null;
+        break;
+      }
+      case '@appointments/SET_ALL_APOINTMENTS': {
+        draft.providers = action.payload.providers;
         break;
       }
       default:
