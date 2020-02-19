@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SafeAreaView, TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Background from '../../../components/background';
+
 import { getAllProviders } from '../../../store/modules/appointments/actions';
 import { 
   Container,
@@ -14,6 +15,7 @@ import {
 } from './styles';
 
 export default function SelectProvider({ navigation }) {
+
   const dispatch = useDispatch();
   const providers = useSelector(state => state.appointments.providers);
 
