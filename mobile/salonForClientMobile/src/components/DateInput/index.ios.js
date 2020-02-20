@@ -23,7 +23,7 @@ export default function DateInput({ date, onChange }) {
     <Container>
       <DateButton onPress={() => setOpened(!opened)}>
         <Icon name="event" color="#FFF" size={20} />
-        <DateText></DateText>
+        <DateText>{dateFormatted}</DateText>
       </DateButton>
       {opened && (
         <DatePickerIOS 

@@ -12,7 +12,6 @@ export default function SelectDateTime() {
 
   return (
     <Background>
-      <Text>SelectDateTime</Text>
       <DateInput date={date} onChange={setDate} />
     </Background>
   );

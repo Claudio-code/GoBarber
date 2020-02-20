@@ -12,27 +12,33 @@ import {
 } from './styles';
 
 export default function DateInput({ date, onChange }) {
-  const [opened, setOpened] = useState(false);
 
   const dateFormatted = useMemo(
     () => format(date, "dd 'de' MMMM 'de' yyyy", { locale: pt }),
     [date]
   );  
 
+  async function handleOpenPiker() {
+    const {
+      action, year, month, day
+    } = await DatePickerAndroid.open({
+      mode: 'spinner',
+      date
+    });
+
+    if (action === DatePickerAndroid.dateSetAction) {
+      const selectedDate = new Date(year, month, day);
+
+      onChange(selectedDate);
+    }
+  }
+
   return (
     <Container>
-      <DateButton onPress={() => setOpened(!opened)}>
+      <DateButton onPress={handleOpenPiker}>
         <Icon name="event" color="#FFF" size={20} />
-        <DateText></DateText>
+        <DateText>{dateFormatted}</DateText>
       </DateButton>
-      {opened && (
-        <DatePickerAndroid 
-          date={date}
-          onDateChange={onChange}
-          minimumDate={new Date()}
-          minuteInterval={60}
-        />
-      )}
     </Container>
   );
 }
