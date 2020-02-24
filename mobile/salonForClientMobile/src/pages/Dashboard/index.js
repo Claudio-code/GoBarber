@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { withNavigationFocus } from 'react-navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -13,13 +14,15 @@ import {
 
 
 
-export default function Dashboard() {
+function Dashboard({ isFocused }) {
   const dispatch = useDispatch();
   const appointments = useSelector(state => state.appointments.appointments);
 
   useEffect(() => {
-    dispatch(getAppointments());
-  }, []);
+    if (isFocused) {
+      dispatch(getAppointments());
+    }
+  }, [isFocused] );
 
   return (
     <Background>
@@ -44,3 +47,5 @@ Dashboard.navigationOptions = {
     <Icon name="event" size={20} color={tintColor} />
   )
 };
+
+export default withNavigationFocus(Dashboard);
