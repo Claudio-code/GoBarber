@@ -1,4 +1,4 @@
-# beauty Salon Application
+# GoBarber
 Aplicação para salões de beleza com aplicação web e mobile com react-native.
 
 
