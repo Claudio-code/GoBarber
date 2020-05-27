@@ -1,6 +1,6 @@
-<p align="center">
+<h1 align="center">
     GoBarber
-</p>
+</h1>
 
 - Aplicação para salões de beleza com aplicação web e mobile com react-native.
 
